@@ -1,0 +1,35 @@
+{
+  "name": "crawlernodeapi",
+  "version": "1.0.0",
+  "description": "Node API Management provides a REST API for performing operations on selected entities, such as federal deputies.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/alairjt/CrawlerNodeAPI.git"
+  },
+  "keywords": [
+    "Crawler",
+    "API",
+    "Rest",
+    "Node",
+    "NodeJS",
+    "Express",
+    "Federal",
+    "Deputies"
+  ],
+  "author": "Alair J Tavares <alairjt@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alairjt/CrawlerNodeAPI/issues"
+  },
+  "homepage": "https://github.com/alairjt/CrawlerNodeAPI#readme",
+  "dependencies": {
+    "express": "^4.16.2",
+    "mongoose": "^4.12.6",
+    "nodemon": "^1.12.1"
+  }
+}
