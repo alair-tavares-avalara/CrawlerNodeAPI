@@ -6,15 +6,16 @@ var express = require('express'),
     bodyParser = require('body-parser');
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/crawlernodeapi', {
+//ToDo: create ENV VAR to connection string
+mongoose.connect(process.env.DB_CONNECTION_STRING || 'mongodb://localhost/crawlernodeapi', {
     useMongoClient: true
 });
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-var routes = require('./api/routes/deputyRoutes'); //importing route
-routes(app); //register the route
+var deputyRoutes = require('./api/routes/deputyRoutes');
+new deputyRoutes(app);
 
 app.use(function (req, res, next) {
     var err = new Error('Not Found');
