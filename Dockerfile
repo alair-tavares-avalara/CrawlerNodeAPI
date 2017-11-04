@@ -4,16 +4,13 @@ FROM node:boron
 WORKDIR /usr/src/app
 
 # Install app dependencies
-COPY package.json .
-# For npm@5 or later, copy package-lock.json as well
-# COPY package.json package-lock.json ./
+COPY package.json package-lock.json ./
 
+RUN npm install -g nodemon
 RUN npm install
-# If you are building your code for production
-# RUN npm install --only=production
 
 # Bundle app source
 COPY . .
 
-EXPOSE 8080
+EXPOSE 5000
 CMD [ "npm", "start" ]
