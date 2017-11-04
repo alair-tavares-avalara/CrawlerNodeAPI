@@ -17,4 +17,4 @@ Node API Management provides a REST API for performing operations on selected en
 * Run with Docker Compose
     * `docker-compose up`
 
-    * http://localhost:5000/deputies
+    * http://localhost:5000/api/deputies
