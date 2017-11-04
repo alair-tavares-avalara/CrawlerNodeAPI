@@ -3,12 +3,22 @@ sudo: true
 node_js:
   - "8.4"
 install:
-  - npm install -g codecov
+  - npm install -g nodemon codecov
   - npm install
 script:
   # - npm test
   # - codecov --token=$CODECOV_TOKEN
+  - npm start
 notifications:
   email:
     on_success: never
     on_failure: always
+
+jobs:
+  include:
+    - stage: deploy
+      script: skip
+      deploy: &heroku
+        provider: heroku
+        app: $HEROKU_APP_NAME
+        api_key: $HEROKU_AUTH_TOKEN
