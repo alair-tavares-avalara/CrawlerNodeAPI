@@ -4,7 +4,10 @@
   "description": "Node API Management provides a REST API for performing operations on selected entities, such as federal deputies.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint api/ test/",
+    "mocha": "mocha -R spec -t 5000",
+    "test": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js --verbose",
+    "docs": "jsdoc -c jsdoc.json",
     "start": "nodemon server.js"
   },
   "repository": {
@@ -28,8 +31,18 @@
   },
   "homepage": "https://github.com/alairjt/CrawlerNodeAPI#readme",
   "dependencies": {
+    "cors": "^2.8.4",
     "express": "^4.16.2",
     "mongoose": "^4.12.6",
     "nodemon": "^1.12.1"
+  },
+  "devDependencies": {
+    "codecov": "^1.0.0",
+    "coveralls": "^3.0.0",
+    "eslint": "^2.0.0",
+    "istanbul": "^0.3.2",
+    "jsdoc": "^3.4.0",
+    "mocha": "^4.0.1",
+    "mocha-lcov-reporter": "^1.3.0"
   }
 }

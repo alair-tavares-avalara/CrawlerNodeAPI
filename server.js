@@ -1,6 +1,7 @@
 var express = require('express'),
+    cors = require('cors'),
     app = express(),
-    port = process.env.PORT || 3000,
+    port = process.env.PORT || 5000,
     mongoose = require('mongoose'),
     Deputy = require('./api/models/deputyModel'),
     bodyParser = require('body-parser');
@@ -11,6 +12,7 @@ mongoose.connect(process.env.DB_CONNECTION_STRING || 'mongodb://localhost/crawle
     useMongoClient: true
 });
 
+app.use(cors());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
