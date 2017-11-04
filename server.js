@@ -7,8 +7,19 @@ var express = require('express'),
     bodyParser = require('body-parser');
 
 mongoose.Promise = global.Promise;
-//ToDo: create ENV VAR to connection string
-mongoose.connect(process.env.DB_CONNECTION_STRING || 'mongodb://localhost/crawlernodeapi', {
+// default to a 'localhost' configuration:
+var connection_string = 'localhost/crawlernodeapi';
+// if OPENSHIFT env variables are present, use the available connection info:
+if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD){
+  connection_string = process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
+  process.env.OPENSHIFT_MONGODB_DB_PASSWORD + "@" +
+  process.env.OPENSHIFT_MONGODB_DB_HOST + ':' +
+  process.env.OPENSHIFT_MONGODB_DB_PORT + '/' +
+  process.env.OPENSHIFT_APP_NAME;
+}
+
+let mongo_connection_string = 'mongodb://'+connection_string;
+mongoose.connect(mongo_connection_string, {
     useMongoClient: true
 });
 
