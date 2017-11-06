@@ -10,7 +10,7 @@ var Deputy = mongoose.model('Deputy');
  * @param res Response
  */
 exports.listAll = function (req, res) {
-    Deputy.find({}, function (err, deputy) {
+    Deputy.find({}, null, {sort: {'name':1}}, function (err, deputy) {
         if (err)
             res.send(err);
         res.json(deputy);

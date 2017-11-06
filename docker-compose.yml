@@ -3,7 +3,7 @@ db:
   ports:
     - "27017:27017"
   command: "--smallfiles --logpath=/dev/null"
-web:
+api:
   build: .
   command: npm start
   volumes:
