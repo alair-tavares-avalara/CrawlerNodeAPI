@@ -3,6 +3,9 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
+/**
+ * DeputySchema - Represents a Deputy
+ */
 var DeputySchema = new Schema({
     id: {
         type: Number,

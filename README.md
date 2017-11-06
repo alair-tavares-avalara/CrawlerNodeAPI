@@ -14,6 +14,9 @@ Node API Management provides a REST API for performing operations on selected en
 * Run tests
     * `npm test`
 
+* Generate doc
+    * `gulp doc`
+
 * Run with Docker Compose
     * `docker-compose up`
 

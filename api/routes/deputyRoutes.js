@@ -2,13 +2,21 @@
 
 var deputy = require('../controllers/deputyController');
 
+/**
+ * Deputy Route - define deputy API routes
+ */
 class DeputyRoute {
-    constructor(app) {
-        app.route('/deputies')
+    /**
+     * Initialize DeputyRoute class.
+     * @constructor
+     * @param {Router} router The Express Router (express.Router())  
+     */
+    constructor(router) {
+        router.route('/deputies')
             .get(deputy.listAll)
             .post(deputy.create);
 
-        app.route('/deputies/:deputyId')
+        router.route('/deputies/:deputyId')
             .get(deputy.getById)
             .put(deputy.update)
             .delete(deputy.delete);
